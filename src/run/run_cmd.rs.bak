@@ -24,16 +24,6 @@ pub fn precise_kill(package_name: &str) {
         } else {
             println!("值为t: {}", output_str);
         }
-
-        // match output_str.parse::<String>() {
-        // Ok(num) => {
-        // println!("转换后的值: -{}-", num.trim());
-
-        // }
-        // Err(_) => {
-        // println!("字符串不能解析为 i32");
-        // }
-        // }
     } else {
         // 如果命令执行失败，打印错误信息
         let error_str = String::from_utf8_lossy(&output.stderr);

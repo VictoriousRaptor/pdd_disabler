@@ -21,8 +21,6 @@ pub fn precise_kill(package_name: &str) {
         if output_str.trim() == "1" {
             info!("清算拼多多");
             kill_app(package_name);
-        } else {
-            println!("值为t: {}", output_str);
         }
     } else {
         // 如果命令执行失败，打印错误信息

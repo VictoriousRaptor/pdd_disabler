@@ -3,8 +3,8 @@ use log::info;
 mod shared;
 use crate::run::start::thread_start;
 use crate::shared::logger::init_log;
+use std::fs;
 use std::process;
-use tokio::fs;
 fn init_misc() {
     let _ = init_log();
     let self_pid = process::id();
@@ -13,7 +13,7 @@ fn init_misc() {
 
 #[tokio::main]
 async fn main() {
-    info!("项目启动");
     init_misc();
+    info!("项目启动");
     let _ = thread_start().await;
 }
