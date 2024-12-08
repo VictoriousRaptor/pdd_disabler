@@ -33,6 +33,5 @@ fn app_run(package_name: &str) -> Result<()> {
             info!("清算失败: {}", package_name);
             continue;
         }
-        info!("清算成功: {}", package_name);
     }
 }

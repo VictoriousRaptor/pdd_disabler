@@ -1,4 +1,5 @@
 use anyhow::Result;
+use log::info;
 use std::process::Command;
 pub fn kill_app(package_name: &str) {
     let cmdline = format!("am force-stop {}", package_name);
@@ -14,6 +15,7 @@ pub fn precise_kill(package_name: &str) -> Result<()> {
     let output_str: u8 = output_str.parse()?;
     if output_str > 0 && output_str < 4 {
         kill_app(package_name);
+        info!("清算成功: {}", package_name);
     }
     Ok(())
 }
