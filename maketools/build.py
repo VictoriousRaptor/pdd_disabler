@@ -162,15 +162,15 @@ def task(args):
         bin = bin.joinpath("release")
     else:
         bin = bin.joinpath("debug")
-    bin = bin.joinpath("PJZ110_sampling_controller")
+    bin = bin.joinpath("pdd_disabler")
 
-    bin_module = temp_dir.joinpath("PJZ110_sampling_controller")
+    bin_module = temp_dir.joinpath("pdd_disabler")
     shutil.copy2(bin, bin_module)
     tools.strip(bin_module)
 
     build_time = datetime.now().strftime("%Y-%m-%d-%Hh%Mm%Ss")
     build_type = "release" if release else "debug"
-    output = Path("output") / f"PJZ110_sampling_controller_{build_type}_{build_time}"
+    output = Path("output") / f"pdd_disabler_{build_type}_{build_time}"
 
     with zipfile.ZipFile(
         f"{output}.zip", "w", compression=zipfile.ZIP_DEFLATED, compresslevel=9
@@ -180,4 +180,4 @@ def task(args):
                 filepath = os.path.join(root, file)
                 arcname = os.path.relpath(filepath, temp_dir)
                 zipf.write(filepath, arcname)
-    print("PJZ110_sampling_controller build successfully: {}.zip".format(output))
+    print("pdd_disabler build successfully: {}.zip".format(output))

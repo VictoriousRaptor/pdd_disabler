@@ -1,3 +1,4 @@
+use crate::run::run_cmd::kill_app;
 use crate::shared::get_top_app::get_topapp_pid_and_name;
 use anyhow::Result;
 use log::info;
@@ -22,8 +23,9 @@ fn app_run() -> Result<()> {
             thread::sleep(Duration::from_millis(1000));
             continue;
         }
-        if global_package=="com.xunmeng.pinduoduo".to_string() && name  != "com.xunmeng.pinduoduo".to_string(){
-        kill_app();
+        if global_package == *"com.xunmeng.pinduoduo" && name != *"com.xunmeng.pinduoduo" {
+        thread::sleep(Duration::from_millis(5000));
+            kill_app();
         }
         global_package = name.clone();
 

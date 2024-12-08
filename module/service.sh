@@ -14,15 +14,7 @@
 # limitations under the License.
 
 MODDIR=${0%/*}
-DIR=/sdcard/Android/fas-rs
 LOG=$MODDIR/log.txt
-
-#进入games.toml中指定的APP设置的采样率
-games_sampling_rate=240
-#日常全局采样率
-default_sampling_rate=120
-
-#改完后，重新执行本sh生效
 
 wait_until_login() {
     # in case of /data encryption is disabled
@@ -32,6 +24,6 @@ wait_until_login() {
 }
 
 wait_until_login
-killall -15 PJZ110_sampling_controller; rm $LOG
-chmod +x ${0%/*}/PJZ110_sampling_controller
-RUST_BACKTRACE=1 nohup $MODDIR/PJZ110_sampling_controller $DIR/games.toml $games_sampling_rate $default_sampling_rate >$LOG 2>&1 &
+killall -15 pdd_disabler; rm $LOG
+chmod +x ${0%/*}/pdd_disabler
+RUST_BACKTRACE=1 nohup $MODDIR/pdd_disabler >$LOG 2>&1 &
