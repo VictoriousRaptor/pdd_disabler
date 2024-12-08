@@ -26,7 +26,7 @@ fn app_run() -> Result<()> {
         if global_package == *"com.xunmeng.pinduoduo" && name != *"com.xunmeng.pinduoduo" {
             thread::sleep(Duration::from_millis(5000));
             info!("清理拼多多");
-            kill_app();
+            kill_app("com.xunmeng.pinduoduo");
         }
         global_package = name.clone();
 
