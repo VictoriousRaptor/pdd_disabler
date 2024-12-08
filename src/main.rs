@@ -1,4 +1,5 @@
 mod run;
+use log::info;
 mod shared;
 use crate::run::start::thread_start;
 use crate::shared::logger::init_log;
@@ -12,6 +13,7 @@ fn init_misc() {
 
 #[tokio::main]
 async fn main() {
+    info!("项目启动");
     init_misc();
-    thread_start().await;
+    let _ = thread_start().await;
 }

@@ -1,6 +1,8 @@
 // use crate::run::run_cmd::kill_app;
 use crate::run::run_cmd::precise_kill;
+use crate::shared::get_top_app::get_topapp_pid_and_name;
 use anyhow::Result;
+use log::info;
 use std::thread;
 use tokio::time::Duration;
 pub async fn thread_start() -> Result<()> {
@@ -14,22 +16,7 @@ pub async fn thread_start() -> Result<()> {
 }
 
 fn app_run() -> Result<()> {
-    let global_package = String::new();
     loop {
-        // let (_, name) = get_topapp_pid_and_name()?;
-
-        // if global_package == name {
-        // thread::sleep(Duration::from_millis(1000));
-        // continue;
-        // }
-        // if global_package == *"com.xunmeng.pinduoduo" && name != *"com.xunmeng.pinduoduo" {
-        // thread::sleep(Duration::from_millis(5000));
-        // info!("清理拼多多");
-        // kill_app("com.xunmeng.pinduoduo");
-        // }
-        // global_package = name.clone();
-
-        // info!("日常app: {}", name);
         precise_kill("com.xunmeng.pinduoduo");
         thread::sleep(Duration::from_millis(1000));
     }
