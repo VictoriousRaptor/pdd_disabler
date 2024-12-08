@@ -23,7 +23,7 @@ fn app_run() -> Result<()> {
             continue;
         }
         if global_package=="com.xunmeng.pinduoduo".to_string() && name  != "com.xunmeng.pinduoduo".to_string(){
-        
+        kill_app();
         }
         global_package = name.clone();
 

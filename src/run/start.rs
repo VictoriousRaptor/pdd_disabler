@@ -1,6 +1,6 @@
 use crate::shared::get_top_app::get_topapp_pid_and_name;
 use anyhow::Result;
-use log::info;
+use log::info;use crate::run::run_cmd::kill_app;
 use std::thread;
 use tokio::time::Duration;
 pub async fn thread_start() -> Result<()> {
