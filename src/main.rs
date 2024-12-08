@@ -1,5 +1,5 @@
 mod run;
-mod shared;
+mod shared;use crate::run::start::thread_start;
 use crate::shared::logger::init_log;
 use std::process;
 use tokio::fs;
@@ -11,5 +11,5 @@ fn init_misc() {
 
 fn main() {
     init_misc();
-    thread_start.await();
+    thread_start().await;
 }
