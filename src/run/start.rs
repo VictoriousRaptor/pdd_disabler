@@ -24,10 +24,8 @@ fn app_run() -> Result<()> {
         }
         global_package = name;
         if global_package == "com.xunmeng.pinduoduo" {
-            thread::sleep(Duration::from_millis(1000));
             continue;
         }
         precise_kill("com.xunmeng.pinduoduo");
-        thread::sleep(Duration::from_millis(1000));
     }
 }
