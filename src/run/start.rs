@@ -31,7 +31,6 @@ fn app_run(package_name: &str) -> Result<()> {
         let rs = precise_kill(package_name);
         if rs.is_err() {
             info!("清算失败: {}", package_name);
-            continue;
         }
     }
 }
