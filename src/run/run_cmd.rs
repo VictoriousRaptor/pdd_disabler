@@ -1,5 +1,4 @@
 use anyhow::Result;
-use log::info;
 use std::process::Command;
 pub fn kill_app(package_name: &str) {
     let cmdline = format!("am force-stop {}", package_name);
