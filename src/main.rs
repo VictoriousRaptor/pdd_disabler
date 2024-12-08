@@ -11,5 +11,5 @@ fn init_misc() {
 
 fn main() {
     init_misc();
-    println!("Hello, world!");
+    thread_start.await();
 }

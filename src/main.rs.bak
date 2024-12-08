@@ -1,5 +1,8 @@
 mod run;
-mod shared;use tokio::fs;
+mod shared;
+use crate::shared::logger::init_log;
+use std::process;
+use tokio::fs;
 fn init_misc() {
     let _ = init_log();
     let self_pid = process::id();
