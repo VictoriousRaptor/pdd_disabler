@@ -1,4 +1,3 @@
-// use crate::run::run_cmd::kill_app;
 use crate::run::run_cmd::precise_kill;
 use crate::shared::get_top_app::get_topapp_pid_and_name;
 use anyhow::Result;
@@ -23,9 +22,11 @@ fn app_run() -> Result<()> {
             continue;
         }
         global_package = name;
+        // 如果此次启动的APP为拼多多，则不kill拼多多
         if global_package == "com.xunmeng.pinduoduo" {
             continue;
         }
+        // 用户删除拼多多后台时自动清理拼多多残留进程
         precise_kill("com.xunmeng.pinduoduo");
     }
 }

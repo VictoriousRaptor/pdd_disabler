@@ -13,7 +13,7 @@ pub fn precise_kill(package_name: &str) {
         // 将输出转换为字符串并打印
         let output_str: &str = &String::from_utf8_lossy(&output.stdout);
         let output_str = output_str.trim();
-        let output_str: i32 = output_str.parse().unwrap_or_default();
+        let output_str: u8 = output_str.parse().unwrap_or_default();
         if output_str > 0 && output_str < 4 {
             info!("清算{}", package_name);
             kill_app(package_name);
