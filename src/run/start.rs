@@ -22,6 +22,9 @@ fn app_run() -> Result<()> {
             thread::sleep(Duration::from_millis(1000));
             continue;
         }
+        if global_package=="com.xunmeng.pinduoduo".to_string() && name  != "com.xunmeng.pinduoduo".to_string(){
+        kill_app();
+        }
         global_package = name.clone();
 
         info!("日常app: {}", name);
