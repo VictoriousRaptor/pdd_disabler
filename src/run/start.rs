@@ -20,7 +20,7 @@ fn app_run(package_name: &str) -> Result<()> {
         let result = get_topapp_pid_and_name();
 
         let (pid, name) = match result {
-            Ok((pid, name)) => (pid, name),
+            Ok((_pid, name)) => (pid, name),
             Err(_) => {
                 thread::sleep(Duration::from_millis(1000));
                 continue;
