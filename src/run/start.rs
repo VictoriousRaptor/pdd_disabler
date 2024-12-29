@@ -17,7 +17,16 @@ pub async fn thread_start() -> Result<()> {
 fn app_run(package_name: &str) -> Result<()> {
     let mut global_package = String::new();
     loop {
-        let (_, name) = get_topapp_pid_and_name()?;
+        let result = get_topapp_pid_and_name();
+
+        let (pid, name) = match result {
+            Ok((pid, name)) => (pid, name),
+            Err(_) => {
+                thread::sleep(Duration::from_millis(1000));
+                continue;
+            }
+        };
+
         if global_package == name {
             thread::sleep(Duration::from_millis(1000));
             continue;
