@@ -19,8 +19,8 @@ fn app_run(package_name: &str) -> Result<()> {
     loop {
         let result = get_topapp_pid_and_name();
 
-        let (pid, name) = match result {
-            Ok((_pid, name)) => (pid, name),
+        let (_pid, name) = match result {
+            Ok((_pid, name)) => (_pid, name),
             Err(_) => {
                 thread::sleep(Duration::from_millis(1000));
                 continue;
