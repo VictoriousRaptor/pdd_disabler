@@ -415,9 +415,6 @@ dependencies = [
  "dumpsys-rs",
  "flexi_logger",
  "log",
- "once_cell",
- "parking_lot",
- "regex",
  "tokio",
 ]
 
