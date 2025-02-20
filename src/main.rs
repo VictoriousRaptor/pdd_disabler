@@ -5,6 +5,10 @@ use crate::run::start::thread_start;
 use crate::shared::logger::init_log;
 use std::fs;
 use std::process;
+
+#[global_allocator]
+static GLOBAL: mimalloc::MiMalloc = mimalloc::MiMalloc;
+
 fn init_misc() {
     let _ = init_log();
     let self_pid = process::id();
