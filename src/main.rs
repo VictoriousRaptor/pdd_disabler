@@ -15,7 +15,7 @@ fn init_misc() {
     let _ = fs::write("/dev/cpuset/background/cgroup.procs", self_pid.to_string());
 }
 
-#[tokio::main]
+#[tokio::main(flavor = "current_thread")]
 async fn main() {
     init_misc();
     info!("项目启动");
