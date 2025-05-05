@@ -1,9 +1,9 @@
-use crate::run::run_cmd::precise_kill;
-use crate::shared::get_top_app::get_topapp_pid_and_name;
+use crate::{run::run_cmd::precise_kill, shared::get_top_app::get_topapp_pid_and_name};
 use anyhow::Result;
 use log::info;
 use std::thread;
 use tokio::time::Duration;
+
 pub async fn thread_start() -> Result<()> {
     // 启动运行线程任务
     let run_thread = tokio::spawn(async move { app_run("com.xunmeng.pinduoduo") });
@@ -19,12 +19,9 @@ fn app_run(package_name: &str) -> Result<()> {
     loop {
         let result = get_topapp_pid_and_name();
 
-        let (_pid, name) = match result {
-            Ok((_pid, name)) => (_pid, name),
-            Err(_) => {
-                thread::sleep(Duration::from_millis(1000));
-                continue;
-            }
+        let Ok((_pid, name)) = result else {
+            thread::sleep(Duration::from_millis(1000));
+            continue;
         };
 
         if global_package == name {
@@ -39,7 +36,7 @@ fn app_run(package_name: &str) -> Result<()> {
         // 用户删除拼多多后台时自动清理拼多多残留进程
         let rs = precise_kill(package_name);
         if rs.is_err() {
-            info!("清算失败: {}", package_name);
+            info!("清算失败: {package_name}");
         }
     }
 }
